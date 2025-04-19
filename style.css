@@ -100,7 +100,9 @@ body{
   border-radius: 10px;
   border-style: solid;
   border-width: 3px;
+  font-size: 40px;
 }
+
 
 /*Giving color to each unit*/
 .button-section{
