@@ -18,12 +18,17 @@ body{
   border-width: 2px;
   height: 600px;
   width: 500px;
+  border-style: solid;
+  border-width: 10px;
+  border-color: gray;
 }
 
 .number-screen{
-  flex: 2;
-  border-style: none
-  
+  flex: 1.5;
+  border-style: none;
+  background-color: gainsboro;
+  border-style: solid;
+  border-width: 10px;
 }
 .button-section{
   flex: 5;
@@ -62,8 +67,7 @@ body{
   flex: 1;
 }
 
-.number1, .number2, .number3, .number4, 
-.number5, .number6, .number7, .number8, .number9, .number-dot{
+.number{
   flex: 1;
   border-style: none;
 }
@@ -87,5 +91,27 @@ body{
 .divide, .multiply, .subtract, .add, .equal-sign{
   border-style: none;
   flex: 1;
+}
+
+/* Unit represents all the smallest blocks presented on the calculator */
+.unit {
+  border-radius: 10px;
+  border-style: solid;
+}
+
+/*Giving color to each unit*/
+.button-section{
+  background-color: black;
+}
+.number.unit, .number0.unit{
+  background-color: green;
+}
+
+.clear.unit, .percentage.unit, .change-sign.unit{
+  background-color: rgb(74, 74, 225);
+}
+
+.add.unit, .subtract.unit, .multiply.unit, .divide.unit, .equal-sign.unit{
+  background-color: rgb(221, 144, 0);
 }
 
