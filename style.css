@@ -1,5 +1,42 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
+body{
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calculator-container {
+  display: flex;
+  flex-direction: column;
+  border-style: solid;
+  border-width: 2px;
+  height: 600px;
+  width: 500px;
+}
+
+.number-screen{
+  flex: 2;
+  border-style: solid
+  
+}
+.button-section{
+  flex: 5;
+  border-style: solid;
+  display: flex;
+}
+
+.numbers-and-auxilary-operators{
+  flex: 3;
+  border-style: solid;
+}
+
+.operators{
+  flex: 1;
+  border-style: solid;
+}
