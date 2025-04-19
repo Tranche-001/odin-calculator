@@ -14,7 +14,7 @@ body{
 .calculator-container {
   display: flex;
   flex-direction: column;
-  border-style: solid;
+  border-style: none;
   border-width: 2px;
   height: 600px;
   width: 500px;
@@ -22,21 +22,70 @@ body{
 
 .number-screen{
   flex: 2;
-  border-style: solid
+  border-style: none
   
 }
 .button-section{
   flex: 5;
-  border-style: solid;
+  border-style: none;
   display: flex;
 }
 
 .numbers-and-auxilary-operators{
   flex: 3;
-  border-style: solid;
+  border-style: none;
+  display: flex;
+  flex-direction: column;
 }
+
+.auxilary-operators{
+  flex: 1;
+  display: flex;
+  border-style: none;
+}
+
+.clear, .change-sign, .percentage{
+  flex: 1;
+  border-style: none;
+}
+
+.numbers {
+  flex: 4;
+  border-style: none;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.upper-numbers, .middle-numbers, .bottom-numbers, .number0-dot{
+  display: flex;
+  flex: 1;
+}
+
+.number1, .number2, .number3, .number4, 
+.number5, .number6, .number7, .number8, .number9, .number-dot{
+  flex: 1;
+  border-style: none;
+}
+
+.number0-dot{
+  display: flex;
+}
+
+.number0{
+  flex: 2;
+}
+
 
 .operators{
   flex: 1;
-  border-style: solid;
+  border-style: none;
+  display: flex;
+  flex-direction: column;
 }
+
+.divide, .multiply, .subtract, .add, .equal-sign{
+  border-style: none;
+  flex: 1;
+}
+
