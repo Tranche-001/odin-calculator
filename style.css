@@ -75,13 +75,11 @@ body{
 .number0-dot{
   display: flex;
 }
-
 .number0{
-  width: 240px;
+  flex:2;
 }
 .number-dot{
   flex: 1;
-
 }
 
 
