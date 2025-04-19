@@ -77,7 +77,11 @@ body{
 }
 
 .number0{
-  flex: 2;
+  width: 240px;
+}
+.number-dot{
+  flex: 1;
+
 }
 
 
@@ -97,13 +101,14 @@ body{
 .unit {
   border-radius: 10px;
   border-style: solid;
+  border-width: 3px;
 }
 
 /*Giving color to each unit*/
 .button-section{
   background-color: black;
 }
-.number.unit, .number0.unit{
+.number.unit, .number0.unit, .number-dot{
   background-color: green;
 }
 
