@@ -50,6 +50,11 @@ const btnAdd = document.querySelector("#add");
 const btnSub = document.querySelector("#subtract");
 const btnDivide = document.querySelector("#divide");
 const btnMultiply = document.querySelector("#multiply");
+const btnEqualSign = document.querySelector("#equal-sign");
+
+
+
+
 //Buttons Listeners
 btn0.addEventListener("click", (e) =>{
   displayNumber = 0;
@@ -92,3 +97,11 @@ btn9.addEventListener("click", (e) =>{
   display.textContent = displayNumber;
 })
 
+
+btnAdd.addEventListener("click", (e) => {
+  operator = '+';
+})
+
+btnEqualSign.addEventListener("click", (e) => {
+  operate(operator, displayNumber, )
+})
