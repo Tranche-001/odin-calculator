@@ -36,7 +36,7 @@ let displayNumber = 0;
 
 const display = document.querySelector("#display-content")
 display.textContent = "banana"
-const btn0 = document.querySelector("#button0")
+const btn0 = document.querySelector("#button0");
 const btn1 = document.querySelector("#button1");
 const btn2 = document.querySelector("#button2");
 const btn3 = document.querySelector("#button3");
@@ -46,7 +46,15 @@ const btn6 = document.querySelector("#button6");
 const btn7 = document.querySelector("#button7");
 const btn8 = document.querySelector("#button8");
 const btn9 = document.querySelector("#button9");
+const btnAdd = document.querySelector("#add");
+const btnSub = document.querySelector("#subtract");
+const btnDivide = document.querySelector("#divide");
+const btnMultiply = document.querySelector("#multiply");
 //Buttons Listeners
+btn0.addEventListener("click", (e) =>{
+  displayNumber = 0;
+  display.textContent = displayNumber;
+})
 btn1.addEventListener("click", (e) =>{
   displayNumber = 1;
   display.textContent = displayNumber;
