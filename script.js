@@ -34,7 +34,7 @@ function operate(operator, a, b){
 
 let displayNumber = 0;
 
-const display = document.querySelector("#display")
+const display = document.querySelector("#display-content")
 display.textContent = "banana"
 const btn0 = document.querySelector("#button0")
 const btn1 = document.querySelector("#button1");
