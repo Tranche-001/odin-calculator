@@ -41,14 +41,23 @@ createNumberButtons();
 // Uma vez que os botões estão criados
 // O próximo passo é configurar o funcionamento deles.
 
+let displayNumber='';
+
+const display = document.querySelector("#display-content")
+display.textContent = ""
 //----- BUTTON FUNCTIONS -----------
 
-let numberButtons = document.querySelectorAll(".unit");
+//Create the numbers for the display
+let numberButtons = document.querySelectorAll(".number");
 numberButtons.forEach(button => {
   button.addEventListener("click", () => {
-    
+    displayNumber += button.textContent;
+    display.textContent = displayNumber;
   })
 });
+
+//Operators Functions
+
 
 
 
@@ -96,10 +105,7 @@ function operate(operator, a, b){
   }
 }
 
-// let displayNumber='';
 
-// const display = document.querySelector("#display-content")
-// display.textContent = ""
 
 // const btn9 = document.querySelector("#button9");
 // const btnAdd = document.querySelector("#add");
