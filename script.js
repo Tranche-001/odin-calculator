@@ -56,11 +56,21 @@ numberButtons.forEach(button => {
   })
 });
 
-//Operators Functions
+//-------- OPERATORS FUNCTIONS ---------------
 
+const btnAdd = document.querySelector("#add");
+const btnSub = document.querySelector("#subtract");
+const btnDivide = document.querySelector("#divide");
+const btnMultiply = document.querySelector("#multiply");
+const btnEqualSign = document.querySelector("#equal-sign");
 
+btnAdd.addEventListener("click")
 
-
+//-------- AUXILARY OPERATOS FUNCTIONS -------------
+const btnClear = document.querySelector("#buttonClear");
+btnClear.addEventListener("click", () =>{
+  display.textContent = '';
+})
 
 
 
@@ -108,11 +118,7 @@ function operate(operator, a, b){
 
 
 // const btn9 = document.querySelector("#button9");
-// const btnAdd = document.querySelector("#add");
-// const btnSub = document.querySelector("#subtract");
-// const btnDivide = document.querySelector("#divide");
-// const btnMultiply = document.querySelector("#multiply");
-// const btnEqualSign = document.querySelector("#equal-sign");
+
 
 //Number Saving Logic
 let numbers = {
