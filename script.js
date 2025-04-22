@@ -123,6 +123,10 @@ btnAdd.addEventListener("click", () =>{
   operator = '+';
   saveNumbers(numbers, displayNumber);
   displayNumber = '';
+  if(!numbers.currentNumber){
+    numbers.accumulator =operate(operator, numbers.accumulator, numbers.currentNumber);
+    // displayNumber = numbers.accumulator;
+  }
 })
 btnEqualSign.addEventListener("click", ()=> {
   saveNumbers(numbers, displayNumber);
@@ -137,6 +141,9 @@ btnEqualSign.addEventListener("click", ()=> {
 const btnClear = document.querySelector("#buttonClear");
 btnClear.addEventListener("click", () =>{
   display.textContent = '';
+  displayNumber = '';
+  numbers.accumulator = null;
+  numbers.currentNumber = null;
 })
 
 
