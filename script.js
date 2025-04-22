@@ -99,6 +99,9 @@ let number2 = 0;
 
 
 function operate(operator, a, b){
+  //Turn the strings into numbers so it work inside the operations functions
+  a = +a;
+  b = +b;
   switch(operator){
     case '+':
       return add(a,b);
