@@ -57,29 +57,29 @@ numberButtons.forEach(button => {
 });
 
 //-------- OPERATORS FUNCTIONS ---------------
-
+let operator = '';
 const btnAdd = document.querySelector("#add");
 const btnSub = document.querySelector("#subtract");
 const btnDivide = document.querySelector("#divide");
 const btnMultiply = document.querySelector("#multiply");
 const btnEqualSign = document.querySelector("#equal-sign");
 
-btnAdd.addEventListener("click")
 
-//-------- AUXILARY OPERATOS FUNCTIONS -------------
-const btnClear = document.querySelector("#buttonClear");
-btnClear.addEventListener("click", () =>{
-  display.textContent = '';
-})
+//Number Saving Logic
+let numbers = {
+  accumulator: null,
+  currentNumber: null
+}
 
-
-
-
-
-
-
-
-
+function saveNumbers(numbers, number){
+  if(!numbers.accumulator){
+    numbers.accumulator = number;
+  }
+  else{
+    numbers.currentNumber = number;
+  }
+}
+//Operations
 
 function add(a, b) {
   return a + b;
@@ -96,44 +96,62 @@ function divide(a, b){
 
 let number1 = 0;
 let number2 = 0;
-let operator = '';
+
 
 function operate(operator, a, b){
   switch(operator){
     case '+':
-      add(a,b);
+      return add(a,b);
       break;
     case '-':
-      subtract(a,b);
+      return subtract(a,b);
       break;
     case '*':
-      multiply(a,b);
+      return multiply(a,b);
       break;
     case '/':
-      divide(a,b);
+      return divide(a,b);
       break;
   }
 }
+
+
+btnAdd.addEventListener("click", () =>{
+  operator = '+';
+  saveNumbers(numbers, displayNumber);
+  displayNumber = '';
+})
+btnEqualSign.addEventListener("click", ()=> {
+  saveNumbers(numbers, displayNumber);
+  console.log(numbers.accumulator);
+  numbers.accumulator = operate(operator, numbers.accumulator, numbers.currentNumber);
+  console.log(numbers.accumulator);
+  displayNumber = numbers.accumulator;
+  display.textContent = displayNumber;
+})
+
+//-------- AUXILARY OPERATOS FUNCTIONS -------------
+const btnClear = document.querySelector("#buttonClear");
+btnClear.addEventListener("click", () =>{
+  display.textContent = '';
+})
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 // const btn9 = document.querySelector("#button9");
 
 
-//Number Saving Logic
-let numbers = {
-  a: null,
-  b: null
-}
-
-function saveNumbers(numbers, number){
-  if(!numbers.a){
-    numbers.a = number;
-  }
-  else{
-    numbers.b = number;
-  }
-}
 
 
 
