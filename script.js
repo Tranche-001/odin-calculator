@@ -118,16 +118,31 @@ function operate(operator, a, b){
   }
 }
 
-
+let flagPressedMoreThanOnce = false;
 btnAdd.addEventListener("click", () =>{
   operator = '+';
   saveNumbers(numbers, displayNumber);
-  displayNumber = '';
-  if(!numbers.currentNumber){
-    numbers.accumulator =operate(operator, numbers.accumulator, numbers.currentNumber);
-    // displayNumber = numbers.accumulator;
+  
+  if(numbers.currentNumber){
+    numbers.accumulator = operate(operator, numbers.accumulator, numbers.currentNumber);
+    display.textContent = numbers.accumulator;
+    flagPressedMoreThanOnce = false;
   }
-})
+  
+  if(!numbers.currentNumber && flagPressedMoreThanOnce){
+    numbers.accumulator += numbers.accumulator;
+    display.textContent = numbers.accumulator;
+  }
+
+  if(!numbers.currentNumber){
+    flagPressedMoreThanOnce = true;
+  }
+
+  displayNumber = '';
+}
+  
+
+)
 btnEqualSign.addEventListener("click", ()=> {
   saveNumbers(numbers, displayNumber);
   console.log(numbers.accumulator);
