@@ -145,11 +145,10 @@ btnAdd.addEventListener("click", () =>{
 )
 btnEqualSign.addEventListener("click", ()=> {
   saveNumbers(numbers, displayNumber);
-  console.log(numbers.accumulator);
   numbers.accumulator = operate(operator, numbers.accumulator, numbers.currentNumber);
   console.log(numbers.accumulator);
-  displayNumber = numbers.accumulator;
-  display.textContent = displayNumber;
+  display.textContent = numbers.accumulator;
+  displayNumber = "";
 })
 
 //-------- AUXILARY OPERATOS FUNCTIONS -------------
