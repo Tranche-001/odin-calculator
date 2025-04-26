@@ -146,6 +146,7 @@ btnEqualSign.addEventListener("click", ()=> {
   console.log(numbers.accumulator);
   display.textContent = numbers.accumulator;
   displayNumber = "";
+  flagPressedMoreThanOnce = false;
 })
 
 //-------- AUXILARY OPERATOS FUNCTIONS -------------
