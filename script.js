@@ -72,6 +72,8 @@ let numbers = {
 }
 
 function saveNumbers(numbers, number){
+  //Turn number from a string into a int/float
+  number = +number;
   if(!numbers.accumulator){
     numbers.accumulator = number;
   }
@@ -96,8 +98,7 @@ function divide(a, b){
 
 function operate(operator, a, b){
   //Turn the strings into numbers so it work inside the operations functions
-  a = +a;
-  b = +b;
+
   switch(operator){
     case '+':
       return add(a,b);
