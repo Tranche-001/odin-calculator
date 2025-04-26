@@ -156,6 +156,7 @@ btnClear.addEventListener("click", () =>{
   displayNumber = '';
   numbers.accumulator = null;
   numbers.currentNumber = null;
+  flagPressedMoreThanOnce = false;
 })
 
 
