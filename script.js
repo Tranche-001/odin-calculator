@@ -120,13 +120,14 @@ btnAdd.addEventListener("click", () =>{
   operator = '+';
   saveNumbers(numbers, displayNumber);
   
+  //Path N+N+
   if(numbers.currentNumber){
     numbers.accumulator = operate(operator, numbers.accumulator, numbers.currentNumber);
     display.textContent = numbers.accumulator;
-    flagPressedMoreThanOnce = false;
+    //flagPressedMoreThanOnce = false;
   }
-  
-  if(!numbers.currentNumber && flagPressedMoreThanOnce){
+  //Path N++(That makes currentNumber empty)
+  else if(!numbers.currentNumber && flagPressedMoreThanOnce){
     numbers.accumulator += numbers.accumulator;
     display.textContent = numbers.accumulator;
   }
