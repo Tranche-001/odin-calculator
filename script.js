@@ -51,6 +51,11 @@ display.textContent = ""
 let numberButtons = document.querySelectorAll(".number");
 numberButtons.forEach(button => {
   button.addEventListener("click", () => {
+    if(flagEqualNumberPath){
+      numbers.accumulator = null;
+      numbers.currentNumber = null;
+      flagEqualNumberPath = false;
+    }
     displayNumber += button.textContent;
     display.textContent = displayNumber;
   })
@@ -124,7 +129,6 @@ btnAdd.addEventListener("click", () =>{
   if(numbers.currentNumber){
     numbers.accumulator = operate(operator, numbers.accumulator, numbers.currentNumber);
     display.textContent = numbers.accumulator;
-    //flagPressedMoreThanOnce = false;
   }
   //Path N++(That makes currentNumber empty)
   else if(!numbers.currentNumber && flagPressedMoreThanOnce){
@@ -141,15 +145,21 @@ btnAdd.addEventListener("click", () =>{
   
 
 )
+
+let flagEqualNumberPath = false;
 btnEqualSign.addEventListener("click", ()=> {
+  flagEqualNumberPath = true;
   saveNumbers(numbers, displayNumber);
+  if(flagPressedMoreThanOnce && !numbers.currentNumber){
+    //Depende da operação
+    numbers.accumulator += numbers.accumulator;
+    display.textContent = numbers.accumulator;
+  }
+  
   numbers.accumulator = operate(operator, numbers.accumulator, numbers.currentNumber);
   display.textContent = numbers.accumulator;
   displayNumber = "";
   flagPressedMoreThanOnce = false;
-  numbers.accumulator = null;
-  numbers.currentNumber = null;
-
 })
 
 //-------- AUXILARY OPERATOS FUNCTIONS -------------
@@ -160,6 +170,7 @@ btnClear.addEventListener("click", () =>{
   numbers.accumulator = null;
   numbers.currentNumber = null;
   flagPressedMoreThanOnce = false;
+  flagEqualNumberPath = false;
 })
 
 
