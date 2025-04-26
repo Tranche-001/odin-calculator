@@ -38,8 +38,8 @@ function createNumberButtons(){
 }
 createNumberButtons();
 
-// Uma vez que os botões estão criados
-// O próximo passo é configurar o funcionamento deles.
+// Once the buttons are created
+// The next step is to set their listeners.
 
 let displayNumber='';
 
@@ -93,10 +93,6 @@ function multiply(a, b){
 function divide(a, b){
   return a / b;
 }
-
-let number1 = 0;
-let number2 = 0;
-
 
 function operate(operator, a, b){
   //Turn the strings into numbers so it work inside the operations functions
