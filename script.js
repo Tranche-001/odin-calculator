@@ -144,10 +144,12 @@ btnAdd.addEventListener("click", () =>{
 btnEqualSign.addEventListener("click", ()=> {
   saveNumbers(numbers, displayNumber);
   numbers.accumulator = operate(operator, numbers.accumulator, numbers.currentNumber);
-  console.log(numbers.accumulator);
   display.textContent = numbers.accumulator;
   displayNumber = "";
   flagPressedMoreThanOnce = false;
+  numbers.accumulator = null;
+  numbers.currentNumber = null;
+
 })
 
 //-------- AUXILARY OPERATOS FUNCTIONS -------------
