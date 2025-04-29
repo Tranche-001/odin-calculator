@@ -178,7 +178,7 @@ btnEqualSign.addEventListener("click", ()=> {
 //-------- AUXILARY OPERATOS FUNCTIONS -------------
 const btnClear = document.querySelector("#buttonClear");
 btnClear.addEventListener("click", () =>{
-  display.textContent = '';
+  display.textContent = '0';
   displayNumber = '';
   numbers.accumulator = null;
   numbers.currentNumber = null;
