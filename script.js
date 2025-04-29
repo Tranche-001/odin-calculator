@@ -61,7 +61,7 @@ numberButtons.forEach(button => {
     flagPressedMoreThanOnce = false;
   })
 });
-
+//Number 0 configurations
 let number0Button = document.querySelector(".number0");
 number0Button.addEventListener("click", () => {
   if(displayNumber && displayNumber!='0'){
@@ -73,6 +73,17 @@ number0Button.addEventListener("click", () => {
     displayNumber = '';
   }
   flagPressedMoreThanOnce = false;
+})
+
+//Dot configurations
+let flagOnlyOneDot = true
+let numberDotButton = document.querySelector(".number-dot")
+numberDotButton.addEventListener("click", () => {
+  if(displayNumber.length >= 1 &&  flagOnlyOneDot){
+    displayNumber += "."
+    display.textContent = displayNumber;
+    flagOnlyOneDot = false;
+  }
 })
 
 //-------- OPERATORS FUNCTIONS ---------------
@@ -186,6 +197,7 @@ btnClear.addEventListener("click", () =>{
   numbers.currentNumber = null;
   flagPressedMoreThanOnce = false;
   flagEqualNumberPath = false;
+  flagOnlyOneDot = true
 })
 
 
