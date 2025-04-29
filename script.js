@@ -141,6 +141,7 @@ btnAdd.addEventListener("click", () =>{
   }
 
   displayNumber = '';
+  flagEqualNumberPath = false;
 }
   
 
