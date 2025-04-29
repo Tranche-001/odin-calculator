@@ -59,6 +59,7 @@ numberButtons.forEach(button => {
     displayNumber += button.textContent;
     display.textContent = displayNumber;
     flagPressedMoreThanOnce = false;
+    flagOnlyOneDot = true;
   })
 });
 //Number 0 configurations
