@@ -43,8 +43,8 @@ createNumberButtons();
 
 let displayNumber='';
 
-const display = document.querySelector("#display-content")
-display.textContent = ""
+const display = document.querySelector("#display-content");
+display.textContent = "0";
 //----- BUTTON FUNCTIONS -----------
 
 //Create the numbers for the display
