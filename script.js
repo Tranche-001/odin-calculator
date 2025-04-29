@@ -61,6 +61,18 @@ numberButtons.forEach(button => {
   })
 });
 
+let number0Button = document.querySelector(".number0");
+number0Button.addEventListener("click", () => {
+  if(displayNumber && displayNumber!='0'){
+    displayNumber += number0Button.textContent;
+    display.textContent = displayNumber;
+  }
+  else{
+    display.textContent = '0';
+    displayNumber = '';
+  }
+})
+
 //-------- OPERATORS FUNCTIONS ---------------
 let operator = '';
 const btnAdd = document.querySelector("#add");
