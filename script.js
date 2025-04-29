@@ -58,6 +58,7 @@ numberButtons.forEach(button => {
     }
     displayNumber += button.textContent;
     display.textContent = displayNumber;
+    flagPressedMoreThanOnce = false;
   })
 });
 
@@ -71,6 +72,7 @@ number0Button.addEventListener("click", () => {
     display.textContent = '0';
     displayNumber = '';
   }
+  flagPressedMoreThanOnce = false;
 })
 
 //-------- OPERATORS FUNCTIONS ---------------
