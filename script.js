@@ -57,11 +57,17 @@ numberButtons.forEach(button => {
       flagEqualNumberPath = false;
     }
     displayNumber += button.textContent;
-    display.textContent = displayNumber;
+    showAtDisplay(displayNumber);
     flagPressedMoreThanOnce = false;
     flagOnlyOneDot = true;
   })
 });
+
+function showAtDisplay(displayNumber){
+  displayNumber = displayNumber.substring(0, 9);
+  display.textContent = displayNumber;
+}
+
 //Number 0 configurations
 let number0Button = document.querySelector(".number0");
 number0Button.addEventListener("click", () => {
