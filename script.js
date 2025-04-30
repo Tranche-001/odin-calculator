@@ -57,7 +57,7 @@ numberButtons.forEach(button => {
       flagEqualNumberPath = false;
     }
     displayNumber += button.textContent;
-    showAtDisplay(displayNumber);
+    displayNumber = showAtDisplay(displayNumber);
     flagPressedMoreThanOnce = false;
     flagOnlyOneDot = true;
   })
@@ -67,6 +67,7 @@ function showAtDisplay(displayNumber){
   displayNumber = displayNumber.toString();
   displayNumber = displayNumber.substring(0, 9);
   display.textContent = displayNumber;
+  return displayNumber;
 }
 
 //Number 0 configurations
@@ -74,7 +75,7 @@ let number0Button = document.querySelector(".number0");
 number0Button.addEventListener("click", () => {
   if(displayNumber && displayNumber!='0'){
     displayNumber += number0Button.textContent;
-    showAtDisplay(displayNumber);
+    displayNumber = showAtDisplay(displayNumber);
   }
   else{
     display.textContent = '0';
@@ -115,13 +116,22 @@ function saveNumbers(numbers, number){
   
   if(!numbers.accumulator && !isNaN(numbers.accumulator)){
     numbers.accumulator = number;
-    if(numbers.accumulator > 999999999){
-      numbers.accumulator = NaN;
-    }
   }
   else{
     numbers.currentNumber = number;
   }
+  numbersAccMaxLimit(numbers);
+}
+
+function numbersAccMaxLimit(numbers){
+  if(numbers.accumulator > 999999999){
+    numbers.accumulator = NaN;
+  }
+}
+
+function saveAtAcc(numbers, result){
+  numbers.accumulator = result;
+  numbersAccMaxLimit(numbers);
 }
 //Operations
 
@@ -164,12 +174,12 @@ btnAdd.addEventListener("click", () =>{
   
   //Path N+N+
   if(numbers.currentNumber){
-    numbers.accumulator = operate(operator, numbers.accumulator, numbers.currentNumber);
+    saveAtAcc(numbers, operate(operator, numbers.accumulator, numbers.currentNumber));
     showAtDisplay(numbers.accumulator);
   }
   //Path N++(That makes currentNumber empty)
   else if(!numbers.currentNumber && flagPressedMoreThanOnce){
-    numbers.accumulator = operate(operator, numbers.accumulator, numbers.accumulator);
+    saveAtAcc(numbers, operate(operator, numbers.accumulator, numbers.accumulator));
     showAtDisplay(numbers.accumulator);
   }
 
@@ -191,11 +201,11 @@ btnEqualSign.addEventListener("click", ()=> {
 
   //Path N+=
   if(flagPressedMoreThanOnce && !numbers.currentNumber){
-    numbers.accumulator = operate(operator, numbers.accumulator, numbers.accumulator);;
+    saveAtAcc(numbers, operate(operator, numbers.accumulator, numbers.accumulator));
     showAtDisplay(numbers.accumulator);
   }
   else{
-    numbers.accumulator = operate(operator, numbers.accumulator, numbers.currentNumber);
+    saveAtAcc(numbers, operate(operator, numbers.accumulator, numbers.currentNumber));
     showAtDisplay(numbers.accumulator);
   }
   
