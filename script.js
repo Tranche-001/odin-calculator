@@ -64,6 +64,7 @@ numberButtons.forEach(button => {
 });
 
 function showAtDisplay(displayNumber){
+  displayNumber = displayNumber.toString();
   displayNumber = displayNumber.substring(0, 9);
   display.textContent = displayNumber;
 }
@@ -73,7 +74,7 @@ let number0Button = document.querySelector(".number0");
 number0Button.addEventListener("click", () => {
   if(displayNumber && displayNumber!='0'){
     displayNumber += number0Button.textContent;
-    display.textContent = displayNumber;
+    showAtDisplay(displayNumber);
   }
   else{
     display.textContent = '0';
@@ -111,8 +112,12 @@ let numbers = {
 function saveNumbers(numbers, number){
   //Turn number from a string into a int/float
   number = +number;
-  if(!numbers.accumulator){
+  
+  if(!numbers.accumulator && !isNaN(numbers.accumulator)){
     numbers.accumulator = number;
+    if(numbers.accumulator > 999999999){
+      numbers.accumulator = NaN;
+    }
   }
   else{
     numbers.currentNumber = number;
@@ -160,12 +165,12 @@ btnAdd.addEventListener("click", () =>{
   //Path N+N+
   if(numbers.currentNumber){
     numbers.accumulator = operate(operator, numbers.accumulator, numbers.currentNumber);
-    display.textContent = numbers.accumulator;
+    showAtDisplay(numbers.accumulator);
   }
   //Path N++(That makes currentNumber empty)
   else if(!numbers.currentNumber && flagPressedMoreThanOnce){
-    numbers.accumulator += numbers.accumulator;
-    display.textContent = numbers.accumulator;
+    numbers.accumulator = operate(operator, numbers.accumulator, numbers.accumulator);
+    showAtDisplay(numbers.accumulator);
   }
 
   if(!numbers.currentNumber){
@@ -183,14 +188,17 @@ let flagEqualNumberPath = false;
 btnEqualSign.addEventListener("click", ()=> {
   flagEqualNumberPath = true;
   saveNumbers(numbers, displayNumber);
+
+  //Path N+=
   if(flagPressedMoreThanOnce && !numbers.currentNumber){
-    //Depende da operação
-    numbers.accumulator += numbers.accumulator;
-    display.textContent = numbers.accumulator;
+    numbers.accumulator = operate(operator, numbers.accumulator, numbers.accumulator);;
+    showAtDisplay(numbers.accumulator);
+  }
+  else{
+    numbers.accumulator = operate(operator, numbers.accumulator, numbers.currentNumber);
+    showAtDisplay(numbers.accumulator);
   }
   
-  numbers.accumulator = operate(operator, numbers.accumulator, numbers.currentNumber);
-  display.textContent = numbers.accumulator;
   displayNumber = "";
   flagPressedMoreThanOnce = false;
 })
