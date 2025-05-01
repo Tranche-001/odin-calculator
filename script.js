@@ -189,12 +189,18 @@ btnAdd.addEventListener("click", () =>{
 
   displayNumber = '';
   flagEqualNumberPath = false;
+  flagOperatorPressed = true;
 }
   
 
 )
 
 let flagEqualNumberPath = false;
+
+//This flag is responsible for tracking if a operator was pressed.
+//We want to know that because, if it was pressed, then changeSign will act differently
+//Instead of changing the sign of the acc, it will change the sign of the current number(display Number)
+let flagOperatorPressed = false;
 btnEqualSign.addEventListener("click", ()=> {
   flagEqualNumberPath = true;
   flagEqualPlusMinusPath = true;
@@ -212,6 +218,10 @@ btnEqualSign.addEventListener("click", ()=> {
   
   displayNumber = "";
   flagPressedMoreThanOnce = false;
+
+  //Pressing Equal shoud make the flag False because after that
+  //the display will be working with the acc content and not the curr content
+  flagOperatorPressed = false;
 })
 
 //-------- AUXILARY OPERATOS FUNCTIONS -------------
@@ -224,25 +234,30 @@ btnClear.addEventListener("click", () =>{
   flagPressedMoreThanOnce = false;
   flagEqualNumberPath = false;
   flagOnlyOneDot = true
+  flagOperatorPressed = false;
 })
 
 const btnChangeSign = document.querySelector("#buttonChangeSign");
 btnChangeSign.addEventListener("click", () => {
-  //Because pressing = cleans the display, Pressing = -> +/- should change the acc and show it
-  if(numbers.accumulator){
+  //This deals with the case where the Acc is at the display.
+  //Which means, the acc must exist and this should not work if an operator has been pressed.
+
+  if(numbers.accumulator && !flagOperatorPressed){
     numbers.accumulator = 0-numbers.accumulator;
     showAtDisplay(numbers.accumulator);
     flagEqualPlusMinusPath= false
   }
   //"Why I don't change the acc here as well?"
   //Because this case deals when there is no Acc to be shown.
+  // or I have pressed a operator button, and now I am dealing with the curr number(displayNumber)
   //Whenever acc is null, the number 
-  //that should change sign is the one being operated in(which is the one on the display)
-  else{
+  //that should change sign is the one being inputed(which is the one on the display).
+  else if(!numbers.accumulator || flagOperatorPressed){
     displayNumber = +displayNumber;
     displayNumber = 0 - displayNumber;
     displayNumber = displayNumber.toString()
     showAtDisplay(displayNumber);
+    flagOperatorPressed = false;
   }
   
 })
