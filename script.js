@@ -177,7 +177,7 @@ btnAdd.addEventListener("click", () =>{
     saveAtAcc(numbers, operate(operator, numbers.accumulator, numbers.currentNumber));
     showAtDisplay(numbers.accumulator);
   }
-  //Path N++(That makes currentNumber empty)
+  //Path N++(which expects currentNumber empty)
   else if(!numbers.currentNumber && flagPressedMoreThanOnce){
     saveAtAcc(numbers, operate(operator, numbers.accumulator, numbers.accumulator));
     showAtDisplay(numbers.accumulator);
@@ -197,6 +197,7 @@ btnAdd.addEventListener("click", () =>{
 let flagEqualNumberPath = false;
 btnEqualSign.addEventListener("click", ()=> {
   flagEqualNumberPath = true;
+  flagEqualPlusMinusPath = true;
   saveNumbers(numbers, displayNumber);
 
   //Path N+=
@@ -223,6 +224,27 @@ btnClear.addEventListener("click", () =>{
   flagPressedMoreThanOnce = false;
   flagEqualNumberPath = false;
   flagOnlyOneDot = true
+})
+
+const btnChangeSign = document.querySelector("#buttonChangeSign");
+btnChangeSign.addEventListener("click", () => {
+  //Because pressing = cleans the display, Pressing = -> +/- should change the acc and show it
+  if(numbers.accumulator){
+    numbers.accumulator = 0-numbers.accumulator;
+    showAtDisplay(numbers.accumulator);
+    flagEqualPlusMinusPath= false
+  }
+  //"Why I don't change the acc here as well?"
+  //Because this case deals when there is no Acc to be shown.
+  //Whenever acc is null, the number 
+  //that should change sign is the one being operated in(which is the one on the display)
+  else{
+    displayNumber = +displayNumber;
+    displayNumber = 0 - displayNumber;
+    displayNumber = displayNumber.toString()
+    showAtDisplay(displayNumber);
+  }
+  
 })
 
 
