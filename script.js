@@ -73,10 +73,12 @@ function showAtDisplay(displayNumber){
 //Number 0 configurations
 let number0Button = document.querySelector(".number0");
 number0Button.addEventListener("click", () => {
+  
   if(displayNumber && displayNumber!='0'){
     displayNumber += number0Button.textContent;
     displayNumber = showAtDisplay(displayNumber);
   }
+  //there is no way to put more 0's into a 0.
   else{
     display.textContent = '0';
     displayNumber = '';
@@ -92,6 +94,12 @@ numberDotButton.addEventListener("click", () => {
     displayNumber += "."
     display.textContent = displayNumber;
     flagOnlyOneDot = false;
+  }
+  if(display.textContent == "0"){
+    displayNumber +="0."
+    display.textContent = displayNumber;
+    flagOnlyOneDot = false;
+
   }
 })
 
@@ -250,8 +258,6 @@ btnChangeSign.addEventListener("click", () => {
   //"Why I don't change the acc here as well?"
   //Because this case deals when there is no Acc to be shown.
   // or I have pressed a operator button, and now I am dealing with the curr number(displayNumber)
-  //Whenever acc is null, the number 
-  //that should change sign is the one being inputed(which is the one on the display).
   else if(!numbers.accumulator || flagOperatorPressed){
     displayNumber = +displayNumber;
     displayNumber = 0 - displayNumber;
