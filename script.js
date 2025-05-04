@@ -215,8 +215,9 @@ function operate(operator, a, b){
 }
 
 let flagPressedMoreThanOnce = false;
-btnAdd.addEventListener("click", () =>{
-  operator = '+';
+
+
+function prepareOperation(operator){
   saveNumbers(numbers, displayNumber);
   
   //Path N+N+
@@ -237,6 +238,11 @@ btnAdd.addEventListener("click", () =>{
   displayNumber = '';
   flagEqualNumberPath = false;
   flagOperatorPressed = true;
+}
+
+btnAdd.addEventListener("click", () =>{
+  operator = '+';
+  prepareOperation(operator);
 }
   
 
