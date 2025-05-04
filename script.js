@@ -203,6 +203,8 @@ btnAdd.addEventListener("click", () =>{
 
 )
 
+//This flag is responsible to check if the user pressed =->N
+//When the user does that, acc and current values must go null because a new operation is about to begin
 let flagEqualNumberPath = false;
 
 //This flag is responsible for tracking if a operator was pressed.
@@ -211,7 +213,6 @@ let flagEqualNumberPath = false;
 let flagOperatorPressed = false;
 btnEqualSign.addEventListener("click", ()=> {
   flagEqualNumberPath = true;
-  flagEqualPlusMinusPath = true;
   saveNumbers(numbers, displayNumber);
 
   //Path N+=
@@ -253,7 +254,6 @@ btnChangeSign.addEventListener("click", () => {
   if(numbers.accumulator && !flagOperatorPressed){
     numbers.accumulator = 0-numbers.accumulator;
     showAtDisplay(numbers.accumulator);
-    flagEqualPlusMinusPath= false
   }
   //"Why I don't change the acc here as well?"
   //Because this case deals when there is no Acc to be shown.
@@ -268,7 +268,22 @@ btnChangeSign.addEventListener("click", () => {
   
 })
 
+const btnPercentage = document.querySelector("#buttonPercentage");
+btnPercentage.addEventListener("click", () =>{
+  //It follows the same path logic as the changeSign button
 
+  if(numbers.accumulator && !flagOperatorPressed){
+    numbers.accumulator = numbers.accumulator/100;
+    showAtDisplay(numbers.accumulator);
+  }
+  else if(!numbers.accumulator || flagOperatorPressed){
+    displayNumber = +displayNumber;
+    displayNumber = displayNumber/100;
+    displayNumber = displayNumber.toString()
+    showAtDisplay(displayNumber);
+    flagOperatorPressed = false;
+  }
+})
 
 
 
