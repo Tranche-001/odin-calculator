@@ -105,10 +105,49 @@ numberDotButton.addEventListener("click", () => {
 
 //-------- OPERATORS FUNCTIONS ---------------
 let operator = '';
+const parentOperatorButtons = document.querySelector(".operators");
+function createOperatorButtons() {
+  for(let i=0; i<5; i++){
+    const btnOperator = document.createElement("button");
+    switch(i){
+      case 0:
+        btnOperator.id = "divide";
+        btnOperator.classList.add("divide")
+        btnOperator.textContent = "/"
+        break;
+      case 1:
+        btnOperator.id = "multiply";
+        btnOperator.classList.add("multiply")
+        btnOperator.textContent = "*"
+
+        break;
+      case 2:
+        btnOperator.id = "subtract";
+        btnOperator.classList.add("subtract")
+        btnOperator.textContent = "-"
+
+        break;
+      case 3:
+        btnOperator.id = "add";
+        btnOperator.classList.add("add");
+        btnOperator.textContent = "+"
+
+        break;
+      case 4:
+        btnOperator.id = "equal-sign"
+        btnOperator.classList.add("equal-sign");
+        btnOperator.textContent = "="
+        break;
+    }
+    btnOperator.classList.add("unit");
+    parentOperatorButtons.appendChild(btnOperator);
+
+  }
+}
+
+createOperatorButtons();
+
 const btnAdd = document.querySelector("#add");
-const btnSub = document.querySelector("#subtract");
-const btnDivide = document.querySelector("#divide");
-const btnMultiply = document.querySelector("#multiply");
 const btnEqualSign = document.querySelector("#equal-sign");
 
 
