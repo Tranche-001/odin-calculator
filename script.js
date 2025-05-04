@@ -111,24 +111,24 @@ function createOperatorButtons() {
     const btnOperator = document.createElement("button");
     switch(i){
       case 0:
-        btnOperator.id = "divide";
+        btnOperator.id = "operator";
         btnOperator.classList.add("divide")
         btnOperator.textContent = "/"
         break;
       case 1:
-        btnOperator.id = "multiply";
+        btnOperator.id = "operator";
         btnOperator.classList.add("multiply")
         btnOperator.textContent = "*"
 
         break;
       case 2:
-        btnOperator.id = "subtract";
+        btnOperator.id = "operator";
         btnOperator.classList.add("subtract")
         btnOperator.textContent = "-"
 
         break;
       case 3:
-        btnOperator.id = "add";
+        btnOperator.id = "operator";
         btnOperator.classList.add("add");
         btnOperator.textContent = "+"
 
@@ -147,7 +147,7 @@ function createOperatorButtons() {
 
 createOperatorButtons();
 
-const btnAdd = document.querySelector("#add");
+// const btnAdd = document.querySelector("#add");
 const btnEqualSign = document.querySelector("#equal-sign");
 
 
@@ -215,7 +215,9 @@ function operate(operator, a, b){
 }
 
 let flagPressedMoreThanOnce = false;
-
+//This flag is responsible to check if the user pressed =->N
+//When the user does that, acc and current values must go null because a new operation is about to begin
+let flagEqualNumberPath = false;
 
 function prepareOperation(operator){
   saveNumbers(numbers, displayNumber);
@@ -240,17 +242,15 @@ function prepareOperation(operator){
   flagOperatorPressed = true;
 }
 
-btnAdd.addEventListener("click", () =>{
-  operator = '+';
-  prepareOperation(operator);
-}
-  
+const operatorButtons = document.querySelectorAll("#operator")
 
-)
+operatorButtons.forEach(operatorButton => {
+  operatorButton.addEventListener("click", ()=>{
+    operator = operatorButton.textContent;
+    prepareOperation(operator);
+  })
+})
 
-//This flag is responsible to check if the user pressed =->N
-//When the user does that, acc and current values must go null because a new operation is about to begin
-let flagEqualNumberPath = false;
 
 //This flag is responsible for tracking if a operator was pressed.
 //We want to know that because, if it was pressed, then changeSign will act differently
