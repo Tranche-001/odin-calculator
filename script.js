@@ -47,10 +47,11 @@ const display = document.querySelector("#display-content");
 display.textContent = "0";
 //----- BUTTON FUNCTIONS -----------
 
-//Create the numbers for the display
+//Create the numbers, when clicking on the buttons, for the display
 let numberButtons = document.querySelectorAll(".number");
 numberButtons.forEach(button => {
   button.addEventListener("click", () => {
+    //If I press equal then a number, the operation should reset
     if(flagEqualNumberPath){
       numbers.accumulator = null;
       numbers.currentNumber = null;
@@ -65,6 +66,7 @@ numberButtons.forEach(button => {
 
 function showAtDisplay(displayNumber){
   displayNumber = displayNumber.toString();
+  //Max of 9 digits on Screen
   displayNumber = displayNumber.substring(0, 9);
   display.textContent = displayNumber;
   return displayNumber;
@@ -274,7 +276,8 @@ btnEqualSign.addEventListener("click", ()=> {
   flagPressedMoreThanOnce = false;
 
   //Pressing Equal shoud make the flag False because after that
-  //the display will be working with the acc content and not the curr content
+  //the display will be working with the acc content and not the curr content.
+  //This is relevant for the changeSign section of the code
   flagOperatorPressed = false;
 })
 
