@@ -198,8 +198,6 @@ function divide(a, b){
 }
 
 function operate(operator, a, b){
-  //Turn the strings into numbers so it work inside the operations functions
-
   switch(operator){
     case '+':
       return add(a,b);
@@ -217,6 +215,7 @@ function operate(operator, a, b){
 }
 
 let flagPressedMoreThanOnce = false;
+
 //This flag is responsible to check if the user pressed =->N
 //When the user does that, acc and current values must go null because a new operation is about to begin
 let flagEqualNumberPath = false;

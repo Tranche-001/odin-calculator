@@ -1,5 +1,7 @@
 # Calculator
 This calculator allows you to perform basic arithmetic calculations with a clean and simple interface.
+## See it live
+https://tranche-001.github.io/odin-calculator/
 # 🚀 Features
 - **Basic Arithmetic:** Perform addition, subtraction, multiplication, and division with ease.
 - **Percentage and negative number support**
